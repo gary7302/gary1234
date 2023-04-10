@@ -1,3 +1,4 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">CancerPatch</a>
@@ -21,7 +22,6 @@
             <li><a class="dropdown-item" href="logout">Logout</a></li>
           </ul>
         </li>
-
         {% else %}
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'loginpage' %} active{% endif %}" href="login">Login</a>
@@ -30,8 +30,99 @@
           <a class="nav-link {% if request.resolver_match.url_name == 'register' %} active{% endif %}" href="register">SignUp</a>
         </li>
         {% endif %}
+        <li class="nav-item dropdown" style="height:cover">
+          <a class="nav-link  active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+           Languages
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <li><a class="dropdown-item" href="/">English</a></li>
+            <li><a class="dropdown-item" href="chinese">Chinese</a></li>
+            <li><a class="dropdown-item" href="hindi">Hindi</a></li>
+            <li><a class="dropdown-item" href="#">Spanish</a></li>
+            <li><a class="dropdown-item" href="#">French</a></li>
+            <li><a class="dropdown-item" href="#">Arabic</a></li>
+            <li><a class="dropdown-item" href="#">Bengali</a></li>
+            <li><a class="dropdown-item" href="#">Russian</a></li>
+            <li><a class="dropdown-item" href="#">Portuguese</a></li>
+            <li><a class="dropdown-item" href="#">Urdu</a></li>
+            <li><a class="dropdown-item" href="#">Indonesian</a></li>
+            <li><a class="dropdown-item" href="#">German</a></li>
+            <li><a class="dropdown-item" href="#">Japanese</a></li>
+            <li><a class="dropdown-item" href="#">Nigerian</a></li>
+            <li><a class="dropdown-item" href="#">Marathi</a></li>
+            <li><a class="dropdown-item" href="#">Telugu</a></li>
+            <li><a class="dropdown-item" href="#">Turkish</a></li>
+            <li><a class="dropdown-item" href="#">Tamil</a></li>
+            <li><a class="dropdown-item" href="#">Vietnamese</a></li>
+            <li><a class="dropdown-item" href="#">Tagalog</a></li>
+            <li><a class="dropdown-item" href="#">Korean</a></li>
+            <li><a class="dropdown-item" href="#">Iranian</a></li>
+            <li><a class="dropdown-item" href="#">Hausa</a></li>
+            <li><a class="dropdown-item" href="#">Egyptian</a></li>
+            <li><a class="dropdown-item" href="#">Swahili</a></li>
+            <li><a class="dropdown-item" href="#">Javanese</a></li>
+            <li><a class="dropdown-item" href="#">Italian</a></li>
+            <li><a class="dropdown-item" href="#">Punjabi</a></li>
+            <li><a class="dropdown-item" href="#">Kannada</a></li>
+            <li><a class="dropdown-item" href="#">Gujarati</a></li>
+            <li><a class="dropdown-item" href="#">Thai</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link  active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+           CancerTypes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Breast</a></li>
+            <li><a class="dropdown-item" href="#">Lung</a></li>
+            <li><a class="dropdown-item" href="#">Colorectum</a></li>
+            <li><a class="dropdown-item" href="#">Prostate</a></li>
+            <li><a class="dropdown-item" href="#">Stomach</a></li>
+            <li><a class="dropdown-item" href="#">Liver</a></li>
+            <li><a class="dropdown-item" href="#">Cervixuteri</a></li>
+            <li><a class="dropdown-item" href="#">Oesophagus</a></li>
+            <li><a class="dropdown-item" href="#">Thyroid</a></li>
+            <li><a class="dropdown-item" href="#">Bladder</a></li>
+            <li><a class="dropdown-item" href="#">NHL Lymphoma</a></li>
+            <li><a class="dropdown-item" href="#">Pancreas</a></li>
+            <li><a class="dropdown-item" href="#">Leukemia</a></li>
+            <li><a class="dropdown-item" href="#">Kidney</a></li>
+            <li><a class="dropdown-item" href="#">Corpusuteri</a></li>
+            <li><a class="dropdown-item" href="#">Oral</a></li>
+            <li><a class="dropdown-item" href="#">Skin</a></li>
+            <li><a class="dropdown-item" href="#">Ovary</a></li>
+            <li><a class="dropdown-item" href="#">Brain</a></li>
+            <li><a class="dropdown-item" href="#">Larynx</a></li>
+            <li><a class="dropdown-item" href="#">Myeloma</a></li>
+            <li><a class="dropdown-item" href="#">Nasopharynx</a></li>
+            <li><a class="dropdown-item" href="#">Gallbladder</a></li>
+            <li><a class="dropdown-item" href="#">Oropharynx</a></li>
+            <li><a class="dropdown-item" href="#">Hypopharynx</a></li>
+            <li><a class="dropdown-item" href="#">HL Lymphoma</a></li>
+            <li><a class="dropdown-item" href="#">Testis</a></li>
+            <li><a class="dropdown-item" href="#">Salivary</a></li>
+            <li><a class="dropdown-item" href="#">Vulva</a></li>
+            <li><a class="dropdown-item" href="#">Penis</a></li>
+            <li><a class="dropdown-item" href="#">Sarcoma</a></li>
+            <li><a class="dropdown-item" href="#">Mesothelioma</a></li>
+            <li><a class="dropdown-item" href="#">Vagina</a></li>
+            <li><a class="dropdown-item" href="#">Others</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">GetPatch</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">ApplyPatch</a>
+        </li>
+
+
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'cart' %} active{% endif %}" href="cart">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">紫薇團購</a>
         </li>
       </ul>
     </div>

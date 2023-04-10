@@ -98,3 +98,41 @@ class Comment(models.Model):
 
     def __str__(self):
         return "%s %s" %(self.product.name,self.commenter_name.username)
+
+class CancerType(models.Model):
+    type=models.CharField(max_length=100)
+    image=models.ImageField(upload_to='images/')
+    description=models.TextField()
+
+    def __str__(self):
+        return self.type
+
+def get_file_path_chinese(request,filename):
+    original_filename=filename
+    nowTime=datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')
+    filename='%s%s' %(nowTime,original_filename)
+    return os.path.join('chinese_uploads/',filename)
+class ChineseCategory(models.Model):
+    slug=models.CharField(max_length=150,null=False,blank=False)
+    name=models.CharField(max_length=150,null=False,blank=False)
+    image=models.ImageField(upload_to=get_file_path_chinese,null=True,blank=True)
+    description=models.TextField(max_length=500,null=True,blank=True)
+    created_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+def get_file_path_hindi(request,filename):
+    original_filename=filename
+    nowTime=datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')
+    filename='%s%s' %(nowTime,original_filename)
+    return os.path.join('hindi_uploads/',filename)
+class HindiCategory(models.Model):
+    slug=models.CharField(max_length=150,null=False,blank=False)
+    name=models.CharField(max_length=150,null=False,blank=False)
+    image=models.ImageField(upload_to=get_file_path_hindi,null=True,blank=True)
+    description=models.TextField(max_length=500,null=True,blank=True)
+    created_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

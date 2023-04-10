@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import *
-from store.controller import authview,cartview,checkview,paymentview
+from store.controller import authview,cartview,checkview,chineseview,paymentview,hindiview
+from django.views.i18n import set_language
 
 urlpatterns = [
     path('',home,name='home'),
@@ -18,4 +19,7 @@ urlpatterns = [
     path('success/', paymentview.success, name='success'),
     path('type/comment/<int:id>/', comment, name='comment'),
     path('addComment/<int:id>', addComment, name='addComment'),
+    #path('set-language/', set_language, name='set_language'),
+    path('chinese',chineseview.chinesehome,name='chinese'),
+    path('hindi',hindiview.hindihome,name='hindi'),
 ]

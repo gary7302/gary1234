@@ -2,7 +2,20 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from .models import *
 from datetime import datetime
-
+from .forms import *
+from django.views.generic import View
+from django.utils.translation import gettext as _
+from django.views.decorators.http import require_GET
+from django.views.decorators.cache import cache_page
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.gzip import gzip_page
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.cache import never_cache
+from django.views.decorators.clickjacking import xframe_options_exempt
+from django.views.decorators.debug import sensitive_post_parameters
+from django.middleware import locale
+from django.middleware.locale import LocaleMiddleware
+from django.utils.decorators import method_decorator
 # Create your views here.
 def home(request):
     category=Category.objects.all()
@@ -39,3 +52,24 @@ def addComment(request,id):
             c.save()
             return redirect('/')
     return HttpResponse('<h1>We are unable to add your comment</h1>')
+
+def cancer(request,type):
+    cancertype=CancerType.objects.filter(type=type)
+
+    return render(request,'store/cancer/breast.html',{'cancer':cancertype})
+
+@sensitive_post_parameters()
+@csrf_exempt
+@cache_page(60 * 15)
+@gzip_page
+@ensure_csrf_cookie
+@never_cache
+@xframe_options_exempt
+@require_GET
+class MyView(View):
+    @method_decorator(LocaleMiddleware)
+    def dispatch(self, request, *args, **kwargs):
+        # Get a translated string
+        message = _('Welcome to my website!')
+        # ...
+        return super().dispatch(request, *args, **kwargs)
