@@ -58,18 +58,5 @@ def cancer(request,type):
 
     return render(request,'store/cancer/breast.html',{'cancer':cancertype})
 
-@sensitive_post_parameters()
-@csrf_exempt
-@cache_page(60 * 15)
-@gzip_page
-@ensure_csrf_cookie
-@never_cache
-@xframe_options_exempt
-@require_GET
-class MyView(View):
-    @method_decorator(LocaleMiddleware)
-    def dispatch(self, request, *args, **kwargs):
-        # Get a translated string
-        message = _('Welcome to my website!')
-        # ...
-        return super().dispatch(request, *args, **kwargs)
+def details(request):
+    return render(request,'store/details.html')

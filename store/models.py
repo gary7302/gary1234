@@ -136,3 +136,18 @@ class HindiCategory(models.Model):
 
     def __str__(self):
         return self.name
+
+def get_file_path_spanish(request,filename):
+    original_filename=filename
+    nowTime=datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')
+    filename='%s%s' %(nowTime,original_filename)
+    return os.path.join('spanish_uploads/',filename)
+class SpanishCategory(models.Model):
+    slug=models.CharField(max_length=150,null=False,blank=False)
+    name=models.CharField(max_length=150,null=False,blank=False)
+    image=models.ImageField(upload_to=get_file_path_spanish,null=True,blank=True)
+    description=models.TextField(max_length=500,null=True,blank=True)
+    created_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

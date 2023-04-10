@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link  active" aria-current="page" href="/">Home</a>
+          <a class="nav-link  active" aria-current="page" href="/">家</a>
         </li>
         {% if request.user.is_authenticated %}
         <li class="nav-item dropdown">
@@ -16,23 +16,23 @@
            {{ request.user }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">行動</a></li>
+            <li><a class="dropdown-item" href="#">另一個動作</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="logout">Logout</a></li>
+            <li><a class="dropdown-item" href="logout">登出</a></li>
           </ul>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link active" href="login">Login</a>
+          <a class="nav-link active" href="login">登錄</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="register">SignUp</a>
+          <a class="nav-link active" href="register">報名</a>
         </li>
         {% endif %}
         <li class="nav-item dropdown" style="height:cover">
           <a class="nav-link  active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-           Languages
+           語言
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
@@ -71,7 +71,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link  active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-           CancerTypes
+           癌症類型
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#">Breast</a></li>
@@ -111,18 +111,18 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">GetPatch</a>
+          <a class="nav-link active" href="#">獲取補丁</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">ApplyPatch</a>
+          <a class="nav-link active" href="#">應用補丁</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="details">Theory</a>
+          <a class="nav-link active" href="details">理論</a>
         </li>
 
 
         <li class="nav-item">
-          <a class="nav-link active" href="cart">Cart</a>
+          <a class="nav-link active" href="cart">大車</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">紫薇團購</a>
