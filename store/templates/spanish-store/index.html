@@ -2,6 +2,15 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        <div class="col-12 about">
+            <h4 class="head">Sobre nosotros</h4>
+            <p>Somos el Templo del Tío Sam estadounidense, ubicado en Los Ángeles, California, con sucursales en Taiwán. Abogue por la prevención y el tratamiento no invasivos del cáncer, proporcione a los pacientes calcomanías gratuitas sobre el cáncer, gratis de por vida. Ayudar a los pacientes con cáncer. Reduce el dolor y prolonga la vida sin gastar un centavo. Al atender a 50 millones de pacientes con cáncer en todo el mundo, no aceptamos donaciones.</p>
+            <p class="para">La fundadora de la asociación, Lini Chiang, tiene 71 años. Cinco miembros de su familia sufrían de diferentes tipos de cáncer. Cuatro de ellos han muerto. La esperanza media de vida de los familiares fallecidos es de 54 años. Decidido a utilizar su invento para ayudar a los pacientes con cáncer de todo el mundo de forma gratuita.</p>
+            <p>Los parches adhesivos contienen los ingredientes activos de las hierbas medicinales y se pegan en los puntos de acupuntura correspondientes con tecnología nanotransdérmica. Los medicamentos pueden administrarse a través de los meridianos para llegar a las células cancerosas e inhibir su crecimiento. Al mismo tiempo, se inventó el método de pegado simétrico, y los parches fríos y calientes se pegaron a ambos lados de los meridianos simétricos, de modo que la inmunidad de las personas pueda absorber estos dos tipos de propiedades medicinales y automáticamente hacer un uso efectivo de ellos, lo que es mejor que la mezcla oral tradicional y la ebullición. Sopa de hierbas, más eficaz</p>
+            <p class="para1">El fundador también inventó www.fatebook.org, a través del cual se puede usar la información de cumpleaños de las personas para analizar estadísticamente los defectos genéticos de las personas y encontrar formas de mejorarlos. Por ejemplo, este sitio web puede encontrar de inmediato la causa de la enfermedad de Parkinson de Bill Gates, usar nuestros parches especiales y, después de una semana de aplicación, puede ver una mejora significativa en el informe del análisis de sangre.</p>
+            <p>Nuestros parches se pueden pegar en los puntos de acupuntura de las plantas de los pies y la fiebre se reducirá inmediatamente en media hora. Es seguro, efectivo, rápido y no invasivo, y tiene muchas pruebas clínicas.</p>
+            <h6 class="float-end">Info: gary7302@gmail.com , Watsapp : +1 626 782 5322 , WeChat : gary7302</h6>
+        </div>
 
          {% for data in category %}
             <div class="col-12 col-md-6 col-lg-4">
@@ -10,9 +19,11 @@
                         <img src="{{ data.image.url }}" class="w-100" />
 
                         <h5 class="card-title">{{data.name}}</h5>
-                        <a href="{% url 'type' data.slug %}" class="btn btn-primary">otras</a>
+                        <a href="{% url 'spanishcomment' data.id %}" class="btn btn-primary">foro de pacientes</a>
                     </div>
                 </div>
             </div>
         {% endfor %}
         {% endblock content %}
+    </div>
+</div>

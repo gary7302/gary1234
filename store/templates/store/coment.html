@@ -6,7 +6,7 @@
       <form method="post" action="{% url 'addComment' eachProduct.id %}" enctype="multipart/form-data">
         {% csrf_token %}
         <button class="btn btn-primary" type="submit" >Add comment</button>
-        <input type="hidden" name="product_id" value="{{eachProduct.id}}">
+        <input type="text" name="product_id" value="{{eachProduct.comments}}">
       {{ form.as_p }}
       </form>
     </div>
@@ -17,6 +17,7 @@
         <p>No Comments Yet...Write the first comment</p>
       {% else %}
         {% for comment in eachProduct.comments.all %}
+      <img src="{{ comment.comment_image.url }}" height="80px" width="80px" />
           <h5>{{ comment.commenter_name }}</h5>
           <h6>{{ comment.comment_body }}</h6>
       <p>{{ comment.created_at }}</p>

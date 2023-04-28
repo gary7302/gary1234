@@ -21,18 +21,18 @@ def home(request):
     category=Category.objects.all()
     return render(request,'store/index.html',{'category':category})
 
-def type(request,slug):
-    if(Category.objects.filter(slug=slug)):
-        product=Product.objects.filter(category__slug=slug)
-        category_name=Category.objects.filter(slug=slug)
-        context={'product':product,'category':category_name}
-        return render(request,'store/products/index.html',context)
-    else:
-        messages.warning(request,'No such category found')
-        return redirect('home')
+# def type(request,slug):
+#     if(Category.objects.filter(slug=slug)):
+#         product=Product.objects.filter(category__slug=slug)
+#         category_name=Category.objects.filter(slug=slug)
+#         context={'product':product,'category':category_name}
+#         return render(request,'store/products/index.html',context)
+#     else:
+#         messages.warning(request,'No such category found')
+#         return redirect('home')
 
 def comment(request,id):
-    eachProduct = Product.objects.get(id=id)
+    eachProduct = Category.objects.get(id=id)
 
 
     form = CommentForm()
@@ -46,7 +46,7 @@ def addComment(request,id):
             commenter_name = request.user
             comment_body = form.cleaned_data['comment_body']
             comment_image = form.cleaned_data['comment_image']
-            eachProduct = Product.objects.get(id=id)
+            eachProduct = Category.objects.get(id=id)
             c = Comment(product=eachProduct, commenter_name=commenter_name, comment_body=comment_body,
                         comment_image=comment_image, created_at=datetime.now())
             c.save()
@@ -60,3 +60,13 @@ def cancer(request,type):
 
 def details(request):
     return render(request,'store/details.html')
+
+def getpatch(request):
+    return render(request,'store/getpatch.html')
+
+def usepatch(request):
+    return render(request,'store/usepatch.html')
+
+def shopping(request):
+    item=Item.objects.all()
+    return render(request,'store/shopping.html',{'item':item})

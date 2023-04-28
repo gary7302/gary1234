@@ -1,7 +1,16 @@
 {% extends 'chinese-store/layouts/base.html' %}
 {% block content %}
-<div class="container">
+<div class="container main">
     <div class="row">
+        <div class="col-12 about">
+            <h4 class="head">關於我們</h4>
+            <p>我們是美國山姆神社，坐落在加州洛杉磯，在臺灣有分支機構。提倡非侵入性的癌症防治，免費提供患者癌症貼紙，終身免費。幫助癌症病患。減低痛苦，延長壽命，不花一毛錢。服務全世界5000萬的癌症病患，我們也不接受任何捐款。</p>
+            <p class="para">協會創始者蔣臨沂71歲全家五人都得了不同的癌症，四人已經死去，過世家人平均壽命54歲。立志要以他的發明免費幫助全世界的癌症患者。</p>
+            <p>膠黏性貼紙含有草藥的有效成分，以納米透皮的科技，貼在相關的穴位上。可將藥物透過經絡的傳遞，達到癌細胞所在，抑制它們的生長。同時發明了對稱貼法，將寒性與熱性的貼紙，貼在對稱經絡的兩邊，讓人的免疫力能吸收這兩類的藥性，自動做有效的利用，比傳統口服混合在一起熬煮的草藥湯汁，更有效果</p>
+            <p class="para1">創始者也發明了ww.fatebook.org,透過人的生日資訊，統計分析出人的遺傳缺陷，找到改善的方法。比如這個網站可以立刻找到比爾蓋茨的帕金森病因，用我們專用的貼紙，貼了一周即可看到血液化驗報告明顯的改善</p>
+            <p>我們的貼紙可以貼在腳底穴位，半小時立刻退燒，安全有效快速非侵入性，已經有大量的臨床證明</p>
+            <h6 class="float-end">Info: gary7302@gmail.com , Watsapp : +1 626 782 5322 , WeChat : gary7302</h6>
+        </div>
 
          {% for data in category %}
             <div class="col-12 col-md-6 col-lg-4">
@@ -10,7 +19,7 @@
                         <img src="{{ data.image.url }}" class="w-100" />
 
                         <h5 class="card-title">{{data.name}}</h5>
-                        <a href="{% url 'type' data.slug %}" class="btn btn-primary">查看详情</a>
+                        <a href="{% url 'chinese-comment' data.id %}" class="btn btn-primary">患者論壇</a>
                     </div>
                 </div>
             </div>

@@ -28,7 +28,7 @@ class Product(models.Model):
     image=models.ImageField(upload_to=get_file_path,null=True,blank=True)
     description=models.CharField(max_length=200)
     big_description=models.TextField(max_length=500)
-    price=models.FloatField()
+    price=models.IntegerField()
     quantity=models.IntegerField()
     created_at=models.DateTimeField(auto_now_add=True)
 
@@ -46,7 +46,7 @@ class Order(models.Model):
     fname=models.CharField(max_length=100,null=False)
     lname = models.CharField(max_length=100, null=False)
     email = models.EmailField(max_length=100, null=False)
-    mobilenumber=models.IntegerField(max_length=100,null=False)
+    mobilenumber=models.IntegerField(null=False)
     address = models.TextField(null=False)
     city = models.CharField(max_length=100, null=False)
     state= models.CharField(max_length=100, null=False)
@@ -78,7 +78,7 @@ class Orderitems(models.Model):
 
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    mobilenumber = models.IntegerField(max_length=100, null=False)
+    mobilenumber = models.IntegerField(null=False)
     address = models.TextField(null=False)
     city = models.CharField(max_length=100, null=False)
     state = models.CharField(max_length=100, null=False)
@@ -90,7 +90,7 @@ class Profile(models.Model):
         return self.user.username
 
 class Comment(models.Model):
-    product=models.ForeignKey(Product,on_delete=models.CASCADE,related_name="comments")
+    product=models.ForeignKey(Category,on_delete=models.CASCADE,related_name="comments")
     commenter_name=models.ForeignKey(User,on_delete=models.CASCADE)
     comment_body=models.TextField()
     comment_image=models.ImageField(upload_to=get_file_path,null=True,blank=True)
@@ -147,6 +147,63 @@ class SpanishCategory(models.Model):
     name=models.CharField(max_length=150,null=False,blank=False)
     image=models.ImageField(upload_to=get_file_path_spanish,null=True,blank=True)
     description=models.TextField(max_length=500,null=True,blank=True)
+    created_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+# class ChineseComment(models.Model):
+#     product=models.ForeignKey(ChineseCategory,on_delete=models.CASCADE,related_name="chinesecomments")
+#     commenter_name=models.ForeignKey(User,on_delete=models.CASCADE)
+#     comment_body=models.TextField()
+#     comment_image=models.ImageField(upload_to=get_file_path,null=True,blank=True)
+#     created_at=models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return "%s %s" %(self.product.name,self.commenter_name.username)
+
+class ChinaComment(models.Model):
+    product=models.ForeignKey(ChineseCategory,on_delete=models.CASCADE,related_name="chinacomments")
+    commenter_name=models.ForeignKey(User,on_delete=models.CASCADE)
+    comment_body=models.TextField()
+    comment_image=models.ImageField(upload_to=get_file_path_chinese,null=True,blank=True)
+    created_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "%s %s" %(self.product.name,self.commenter_name.username)
+
+class HindiComment(models.Model):
+    product=models.ForeignKey(HindiCategory,on_delete=models.CASCADE,related_name="hindicomment")
+    commenter_name=models.ForeignKey(User,on_delete=models.CASCADE)
+    comment_body=models.TextField()
+    comment_image=models.ImageField(upload_to=get_file_path_hindi,null=True,blank=True)
+    created_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "%s %s" %(self.product.name,self.commenter_name.username)
+
+class SpanishComment(models.Model):
+    product=models.ForeignKey(SpanishCategory,on_delete=models.CASCADE,related_name="spanishcomment")
+    commenter_name=models.ForeignKey(User,on_delete=models.CASCADE)
+    comment_body=models.TextField()
+    comment_image=models.ImageField(upload_to=get_file_path_spanish,null=True,blank=True)
+    created_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "%s %s" %(self.product.name,self.commenter_name.username)
+
+def get_file_path_shopping(request,filename):
+    original_filename=filename
+    nowTime=datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')
+    filename='%s%s' %(nowTime,original_filename)
+    return os.path.join('shopping_uploads/',filename)
+class Item(models.Model):
+    slug=models.CharField(max_length=150,null=False,blank=False)
+    name=models.CharField(max_length=150,null=False,blank=False)
+    image=models.ImageField(upload_to=get_file_path_shopping,null=True,blank=True)
+    price=models.FloatField(null=False,blank=False)
+    stock=models.IntegerField(null=False,blank=False)
+    description=models.TextField(null=True,blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

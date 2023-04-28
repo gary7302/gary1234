@@ -6,7 +6,7 @@
             <form method="post" action="">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for="" class="form-label">Enter Username</label>
+                    <label for="" class="form-label">Enter username</label>
                     <input type="text" class="form-control" name="username" placeholder="Enter username"/>
                     {% if form.errors.username %}
                     <label class="text-danger">{{ form.errors.username }}</label>

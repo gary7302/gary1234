@@ -91,3 +91,43 @@ def placeorder(request):
 
 
     return redirect("/")
+
+@login_required(login_url='loginpage')
+def maincheckout(request):
+
+    total_price=3
+
+    userprofile=Profile.objects.filter(user=request.user).first()
+
+    context={'total_price':total_price,'userprofile':userprofile}
+    return render(request,'store/maincheckout.html',context)
+
+@login_required(login_url='loginpage')
+def chinesemaincheckout(request):
+
+    total_price=3
+
+    userprofile=Profile.objects.filter(user=request.user).first()
+
+    context={'total_price':total_price,'userprofile':userprofile}
+    return render(request,'chinese-store/maincheckout.html',context)
+
+@login_required(login_url='loginpage')
+def hindimaincheckout(request):
+
+    total_price=3
+
+    userprofile=Profile.objects.filter(user=request.user).first()
+
+    context={'total_price':total_price,'userprofile':userprofile}
+    return render(request,'hindi-store/maincheckout.html',context)
+
+@login_required(login_url='loginpage')
+def spanishmaincheckout(request):
+
+    total_price=3
+
+    userprofile=Profile.objects.filter(user=request.user).first()
+
+    context={'total_price':total_price,'userprofile':userprofile}
+    return render(request,'spanish-store/maincheckout.html',context)
